@@ -1,0 +1,37 @@
+{
+  "name": "ccgdk",
+  "version": "1.0.0",
+  "description": "cocos creator game develop kit",
+  "main": "index.js",
+  "bin": {
+    "ccgdk": "./bin/ccgdk.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "minimist": "^1.2.6"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.6"
+  },
+  "scripts": {
+    "test": "ccgdk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hepeidong/ccgdk.git"
+  },
+  "keywords": [
+    "cocos",
+    "creator",
+    "gdk",
+    "cocos creator",
+    "cocos creator gdk",
+    "ccgdk"
+  ],
+  "author": "何沛东",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hepeidong/ccgdk/issues"
+  },
+  "homepage": "https://github.com/hepeidong/ccgdk#readme"
+}
