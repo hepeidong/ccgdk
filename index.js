@@ -2,7 +2,8 @@ const Fs = require('fs');
 const colors = require('colors');
 const minimist = require("minimist");
 const { proj_init } = require('./src/proj-init');
-const { utils } = require('./utils');
+const { utils } = require('./src/utils');
+const { fileReader } = require('./src/excel-reader');
 
 const path = utils.cwd('command.json');
 const commandStr = Fs.readFileSync(path).toString();
@@ -44,6 +45,9 @@ if (argv._[0] && argv._[0].length > 0) {
   const cmd = argv._[0];
   if (cmd === command.init) {
     proj_init();
+  }
+  else if (cmd === command.importTabel) {
+    fileReader();
   }
 }
 else if (!argv._[0] || argv._[0] === ' ' || argv._[0].length === 0) {

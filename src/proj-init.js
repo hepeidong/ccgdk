@@ -1,7 +1,7 @@
 const Fs = require('fs');
 require('colors');
 const readline = require('readline');
-const { utils } = require('../utils');
+const { utils } = require('./utils');
 const rl = readline.createInterface({input: process.stdin,output: process.stdout});
 
 const path = utils.cwd('config_templete.json');
