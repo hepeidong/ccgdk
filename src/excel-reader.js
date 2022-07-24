@@ -232,24 +232,31 @@ function readFile(worksheet, fileObj) {
 var _config_d_ts = '';
 
 module.exports = {
-    async fileReader(src, dst) {
+    async excel_reader(src, dst) {
         // utils.log('Call fileReader', src, dst);
         //获取xlsx表格对象
         const workbook = new Excel.Workbook();
         //读取xlsx表格数据
         // await workbook.xlsx.readFile('E:\\test\\TeamConfigure.xlsm');
         await workbook.xlsx.readFile('E:\\test\\Temp.xlsx');//SkillLabel Temp
-        _config_d_ts = 'export declare namespace config {\n';
+        _config_d_ts = 'declare namespace config {\n';
         const fileObj = {};
         //读取表格中的每一个子表
-        for (let worksheet of workbook.worksheets) {
+        for (const worksheet of workbook.worksheets) {
             readFile(worksheet, fileObj);
         }
-        _config_d_ts += '}';
+        _config_d_ts += '}\n';
+        _config_d_ts += 'interface IFileData {\n';
+        for (const worksheet of workbook.worksheets) {
+            _config_d_ts += `\t${worksheet.name}?: IContainer<config.${worksheet.name}>;\n`;
+        }
+        _config_d_ts += "}\n";
+        _config_d_ts += 'type gdk_file_data = {\n';
+        _config_d_ts += '\t[K in keyof IFileData]: Readonly<IFileData[K]>;\n}';
         utils.log(_config_d_ts);
         Fs.writeFileSync('E:\\test\\config.d.ts', _config_d_ts);
         // utils.log('Json file result', fileObj);
-        // await Fs.writeFileSync(dst, JSON.stringify(fileObj));
+        Fs.writeFileSync('E:\\test\\game_config.json', JSON.stringify(fileObj));
         // utils.log(JSON.stringify(fileObj, null, 4));
         process.exit();
     }
