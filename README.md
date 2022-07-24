@@ -7,3 +7,6 @@ ccgdk是一个cocos游戏开发脚手架，里面包含了几种游戏开发常�
     需要确保本地具备nodejs运行环境，然后采用一下命令安装
 
     npm install -g install
+
+
+# 项目尚在开发阶段，未发布
